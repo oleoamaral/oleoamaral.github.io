@@ -60,12 +60,22 @@ a {
     gap: 24px;
 }
 
+/* Logo PCB */
+
 .site-logo {
-    color: var(--text);
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
-    font-size: 14px;
-    white-space: nowrap;
+    flex-shrink: 0;
 }
+
+.site-logo img {
+    display: block;
+    width: 110px;
+    height: auto;
+}
+
+/* Navegação */
 
 .header-actions {
     display: flex;
@@ -85,7 +95,6 @@ a {
     font-size: 14px;
 }
 
-.site-logo:hover,
 .site-nav a:hover {
     color: var(--accent);
 }
@@ -138,8 +147,6 @@ a {
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 40px;
 }
 
 .intro-content {
@@ -162,20 +169,6 @@ a {
 .intro-university {
     color: var(--muted);
     margin: 4px 0 0;
-}
-
-/* Assinatura PCB */
-
-.intro-signature {
-    width: 200px;
-    flex-shrink: 0;
-    transform: translateY(-15px);
-}
-
-.intro-signature img {
-    display: block;
-    width: 100%;
-    height: auto;
 }
 
 
@@ -259,15 +252,11 @@ a {
    Acessibilidade
 ======================================== */
 
-/* Destaque ao navegar pelo teclado */
-
 a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 4px;
 }
-
-/* Respeitar a preferência por menos animações */
 
 @media (prefers-reduced-motion: reduce) {
     html {
@@ -323,19 +312,11 @@ button:focus-visible {
     }
 
     .intro {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
         padding: 36px 0;
     }
 
     .intro h1 {
         font-size: 28px;
-    }
-
-    .intro-signature {
-        width: 180px;
-        transform: none;
     }
 
     .site-footer {
