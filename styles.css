@@ -1,12 +1,30 @@
+
+/* ========================================
+   Cores e configurações gerais
+======================================== */
+
 :root {
     --background: #F7F4E9;
     --text: #181818;
     --border: #D8D5CA;
     --accent: #2563EB;
+    --muted: #666666;
+}
+
+html[data-theme="dark"] {
+    --background: #20211F;
+    --text: #F1EDE3;
+    --border: #444640;
+    --accent: #82ADFF;
+    --muted: #B8B8B0;
 }
 
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -14,7 +32,21 @@ body {
     background-color: var(--background);
     color: var(--text);
     font-family: Georgia, "Times New Roman", serif;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
 }
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ========================================
+   Cabeçalho
+======================================== */
 
 .site-header {
     max-width: 1000px;
@@ -23,47 +55,81 @@ body {
     border-bottom: 1px solid var(--border);
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    gap: 24px;
 }
 
-.site-logo,
+.site-logo {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
 .site-nav a {
     color: var(--text);
     text-decoration: none;
     font-size: 14px;
 }
 
-.site-nav {
-    display: flex;
-    gap: 28px;
-}
-
+.site-logo:hover,
 .site-nav a:hover {
     color: var(--accent);
 }
 
-@media (max-width: 1040px) {
-    .site-header {
-        margin: 0 20px;
-    }
+
+/* ========================================
+   Controles de tema e idioma
+======================================== */
+
+.site-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding-left: 20px;
+    border-left: 1px solid var(--border);
 }
 
-@media (max-width: 600px) {
-    .site-header {
-        flex-direction: column;
-        gap: 16px;
-    }
+.site-controls button {
+    appearance: none;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
 
-    .site-nav {
-        gap: 16px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+    margin: 0;
+    padding: 4px;
+
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.site-controls button:hover {
+    color: var(--accent);
 }
 
 
-/* Apresentação */
+/* ========================================
+   Apresentação
+======================================== */
 
 .intro {
     max-width: 1000px;
@@ -78,6 +144,7 @@ body {
 
 .intro-content {
     flex: 1;
+    min-width: 0;
 }
 
 .intro h1 {
@@ -93,46 +160,11 @@ body {
 }
 
 .intro-university {
-    color: #666666;
+    color: var(--muted);
     margin: 4px 0 0;
 }
 
-.intro-description {
-    max-width: 480px;
-    margin: 20px 0 0;
-    color: #555555;
-    line-height: 1.6;
-}
-
-.intro-signature {
-    width: 240px;
-    flex-shrink: 0;
-}
-
-/* Adaptação para telas menores */
-
-@media (max-width: 1040px) {
-    .intro {
-        margin: 0 20px;
-    }
-}
-
-@media (max-width: 600px) {
-    .intro {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-        padding: 36px 0;
-    }
-
-    .intro h1 {
-        font-size: 28px;
-    }
-
-    .intro-signature {
-        width: 200px;
-    }
-}
+/* Assinatura PCB */
 
 .intro-signature {
     width: 200px;
@@ -147,8 +179,40 @@ body {
 }
 
 
+/* ========================================
+   Títulos das seções
+======================================== */
 
-/* Projetos */
+.section-label {
+    margin: 0 0 20px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 0;
+    color: var(--text);
+}
+
+.section-label em {
+    color: var(--muted);
+    font-weight: normal;
+}
+
+
+/* ========================================
+   Sobre
+======================================== */
+
+.about {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 0 40px;
+    border-top: 1px solid var(--border);
+}
+
+
+/* ========================================
+   Projetos
+======================================== */
 
 .projects {
     max-width: 1000px;
@@ -157,70 +221,124 @@ body {
     border-top: 1px solid var(--border);
 }
 
-.section-label {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    margin-bottom: 14px;
-
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0;
-    color: var(--text);
-}
-
-.projects-description {
-    color: #666666;
-    font-size: 15px;
-    font-style: italic;
-    line-height: 1.6;
-    margin: 0;
-}
-
 .projects-list {
     margin-top: 24px;
 }
 
 
-/* Responsividade */
+/* ========================================
+   Rodapé / Contato
+======================================== */
 
-@media (max-width: 1040px) {
-    .projects {
-        margin: 0 20px;
+.site-footer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 0 40px;
+    border-top: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.site-footer a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: var(--accent);
+}
+
+
+/* ========================================
+   Acessibilidade
+======================================== */
+
+/* Destaque ao navegar pelo teclado */
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* Respeitar a preferência por menos animações */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    body {
+        transition: none;
     }
 }
 
-/* Formação */
 
-.education {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 48px 0;
-    border-top: 1px solid var(--border);
-}
-
-.education h2 {
-    font-size: 24px;
-    font-weight: normal;
-    margin: 0 0 24px;
-}
-
-.education-item h3 {
-    font-size: 18px;
-    font-weight: normal;
-    margin: 0 0 6px;
-}
-
-.education-item p {
-    color: #666666;
-    margin: 0;
-}
-
-/* Responsividade */
+/* ========================================
+   Responsividade — Tablets
+======================================== */
 
 @media (max-width: 1040px) {
-    .education {
-        margin: 0 20px;
+    .site-header,
+    .intro,
+    .about,
+    .projects,
+    .site-footer {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+
+/* ========================================
+   Responsividade — Celulares
+======================================== */
+
+@media (max-width: 600px) {
+    .site-header {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .header-actions {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .site-nav {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .site-controls {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .intro {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 36px 0;
+    }
+
+    .intro h1 {
+        font-size: 28px;
+    }
+
+    .intro-signature {
+        width: 180px;
+        transform: none;
+    }
+
+    .site-footer {
+        flex-wrap: wrap;
     }
 }

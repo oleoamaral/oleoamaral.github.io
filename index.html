@@ -1,78 +1,135 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Leonardo S. Amaral</title>
+    <title>lnrd.mrl</title>
+
+    <link rel="icon" type="image/svg+xml"
+          href="assets/images/favicon.svg">
 
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header class="site-header">
-        <a href="#" class="site-logo">oleoamaral</a>
+    <!-- Cabeçalho -->
 
-        <nav class="site-nav" aria-label="Navegação principal">
-            <a href="#sobre">Sobre</a>
-            <a href="#projetos">Projetos</a>
-            <a href="#formacao">Formação</a>
-            <a href="#contato">Contato</a>
-        </nav>
+    <header class="site-header">
+        <a href="#inicio" class="site-logo">oleoamaral</a>
+
+        <div class="header-actions">
+            <nav class="site-nav" aria-label="Navegação principal">
+                <a href="#sobre"
+                   data-pt="Sobre"
+                   data-en="About">Sobre</a>
+
+                <a href="#projetos"
+                   data-pt="Projetos"
+                   data-en="Projects">Projetos</a>
+
+                <a href="#contato"
+                   data-pt="Contato"
+                   data-en="Contact">Contato</a>
+            </nav>
+
+            <div class="site-controls">
+                <button
+                    id="theme-toggle"
+                    type="button"
+                    aria-label="Ativar tema escuro"
+                    aria-pressed="false"
+                    title="Ativar tema escuro"
+                >☾</button>
+
+                <button
+                    id="language-toggle"
+                    type="button"
+                    aria-label="Switch to English"
+                    title="Alterar idioma"
+                >EN</button>
+            </div>
+        </div>
     </header>
 
-<main>
-    <section class="intro" id="inicio">
-        <div class="intro-content">
-            <h1>Leonardo S. Amaral</h1>
+    <main>
 
-            <p class="intro-course">
-                Engenharia de Telecomunicações
-            </p>
+        <!-- Apresentação -->
 
-            <p class="intro-university">
-                Universidade Federal de Santa Maria
-            </p>
+        <section class="intro" id="inicio">
+            <div class="intro-content">
+                <h1>Leonardo S. Amaral</h1>
 
-            <p class="intro-description">
-                .
-            </p>
-        </div>
+                <p
+                    class="intro-course"
+                    data-pt="Engenharia de Telecomunicações"
+                    data-en="Telecommunications Engineering"
+                >
+                    Engenharia de Telecomunicações
+                </p>
 
-        <div class="intro-signature">
-            <img
-              src="assets/images/lnrd-mrl.png"
-              alt="Assinatura lnrd.mrl em uma PCB azul"
-           >
-        </div>
-    </section>
+                <p
+                    class="intro-university"
+                    data-pt="Universidade Federal de Santa Maria"
+                    data-en="Federal University of Santa Maria"
+                >
+                    Universidade Federal de Santa Maria
+                </p>
+            </div>
 
-<section class="projects" id="projetos">
-    <div class="section-label">
-        <span>01</span>
-        <span>/</span>
-        <span>PROJETOS</span>
-    </div>
+            <div class="intro-signature">
+                <img
+                    src="assets/images/lnrd-mrl.png"
+                    alt="Assinatura lnrd.mrl em uma PCB azul"
+                >
+            </div>
+        </section>
 
-    <p class="projects-description">
-        Projetos acadêmicos, pessoais e profissionais.
-    </p>
+        <!-- Sobre -->
 
-    <div class="projects-list">
-        <!-- Projetos serão adicionados futuramente -->
-    </div>
-</section>
+        <section class="about" id="sobre">
+            <h2
+                class="section-label"
+                data-pt="Sobre"
+                data-en="About"
+            >Sobre</h2>
+        </section>
 
-<section class="education" id="formacao">
-    <h2>Formação</h2>
+        <!-- Projetos -->
 
-    <div class="education-item">
-        <h3>Engenharia de Telecomunicações</h3>
-        <p>Universidade Federal de Santa Maria (UFSM)</p>
-    </div>
-</section>
+        <section class="projects" id="projetos">
+            <h2 class="section-label">
+                <span
+                    data-pt="Projetos"
+                    data-en="Projects"
+                >Projetos</span>
 
-</main>
+                <em
+                    data-pt="— acadêmicos, pessoais e profissionais."
+                    data-en="— academic, personal and professional."
+                >— acadêmicos, pessoais e profissionais.</em>
+            </h2>
 
+            <div class="projects-list">
+                <!-- Projetos serão adicionados futuramente -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé / Contato -->
+
+    <footer class="site-footer" id="contato">
+        <span>Leonardo S. Amaral</span>
+
+        <a
+            href="https://github.com/oleoamaral"
+            target="_blank"
+            rel="noopener noreferrer"
+        >GitHub ↗</a>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
