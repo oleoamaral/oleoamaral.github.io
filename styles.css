@@ -1,6 +1,6 @@
 
 /* ========================================
-   Cores e configurações gerais
+   CORES — TEMA CLARO
 ======================================== */
 
 :root {
@@ -11,6 +11,11 @@
     --muted: #666666;
 }
 
+
+/* ========================================
+   CORES — TEMA ESCURO
+======================================== */
+
 html[data-theme="dark"] {
     --background: #20211F;
     --text: #F1EDE3;
@@ -18,6 +23,11 @@ html[data-theme="dark"] {
     --accent: #82ADFF;
     --muted: #B8B8B0;
 }
+
+
+/* ========================================
+   CONFIGURAÇÕES GERAIS
+======================================== */
 
 * {
     box-sizing: border-box;
@@ -29,8 +39,10 @@ html {
 
 body {
     margin: 0;
+
     background-color: var(--background);
     color: var(--text);
+
     font-family: Georgia, "Times New Roman", serif;
 
     transition:
@@ -45,14 +57,38 @@ a {
 
 
 /* ========================================
-   Cabeçalho
+   TRANSIÇÕES DE CORES
+======================================== */
+
+.site-header,
+.intro,
+.about,
+.projects,
+.site-footer,
+.site-nav a,
+.site-controls,
+.site-controls button,
+.intro-course,
+.intro-university,
+.section-label,
+.section-label em,
+.site-footer a {
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background-color 0.25s ease;
+}
+
+
+/* ========================================
+   CABEÇALHO
 ======================================== */
 
 .site-header {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 24px 0;
-    border-bottom: 1px solid var(--border);
+
+    padding: 22px 0;
 
     display: flex;
     align-items: center;
@@ -60,27 +96,37 @@ a {
     gap: 24px;
 }
 
-/* Logo PCB */
+
+/* Logotipo */
 
 .site-logo {
     display: inline-flex;
     align-items: center;
-    text-decoration: none;
     flex-shrink: 0;
+
+    text-decoration: none;
 }
 
 .site-logo img {
     display: block;
+
     width: 110px;
     height: auto;
+
+    transition: opacity 0.2s ease;
 }
+
+.site-logo:hover img {
+    opacity: 0.82;
+}
+
 
 /* Navegação */
 
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 30px;
 }
 
 .site-nav {
@@ -90,40 +136,89 @@ a {
 }
 
 .site-nav a {
+    position: relative;
+    display: inline-block;
+
+    padding: 5px 0;
+
     color: var(--text);
     text-decoration: none;
+
     font-size: 14px;
+    white-space: nowrap;
 }
 
-.site-nav a:hover {
+
+/* Sublinhado dos links */
+
+.site-nav a::after,
+.site-footer a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1px;
+
+    height: 1px;
+    background-color: var(--accent);
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.25s ease;
+}
+
+.site-nav a:hover,
+.site-nav a.is-active,
+.site-footer a:hover {
     color: var(--accent);
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after,
+.site-nav a.is-active::after,
+.site-footer a:hover::after,
+.site-footer a:focus-visible::after {
+    transform: scaleX(1);
 }
 
 
 /* ========================================
-   Controles de tema e idioma
+   CONTROLES DE TEMA E IDIOMA
 ======================================== */
 
 .site-controls {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 
-    padding-left: 20px;
+    padding-left: 18px;
     border-left: 1px solid var(--border);
 }
 
 .site-controls button {
     appearance: none;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 28px;
+    min-height: 28px;
+
+    padding: 4px;
+    margin: 0;
+
     background: transparent;
     border: none;
     border-radius: 0;
     box-shadow: none;
 
-    margin: 0;
-    padding: 4px;
-
     color: var(--text);
+
     font-family: Arial, sans-serif;
     font-size: 13px;
     line-height: 1;
@@ -137,13 +232,105 @@ a {
 
 
 /* ========================================
-   Apresentação
+   SEPARADORES — R, L, C E AM
+======================================== */
+
+.circuit-divider {
+    max-width: 1000px;
+    width: 100%;
+    height: 40px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* Linhas horizontais */
+
+.circuit-wire {
+    position: relative;
+
+    flex: 1;
+    height: 1px;
+
+    background-color: var(--border);
+
+    transition: background-color 0.25s ease;
+}
+
+
+/* Pontos azuis nas extremidades */
+
+.circuit-wire:first-child::before,
+.circuit-wire:last-child::after {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+    background-color: var(--accent);
+
+    transform: translateY(-50%);
+
+    transition: background-color 0.25s ease;
+}
+
+.circuit-wire:first-child::before {
+    left: 0;
+}
+
+.circuit-wire:last-child::after {
+    right: 0;
+}
+
+
+/* Símbolos RLC */
+
+.circuit-symbol {
+    display: block;
+
+    width: 80px;
+    height: 32px;
+    flex: 0 0 80px;
+
+    overflow: visible;
+}
+
+.circuit-symbol path {
+    fill: none;
+    stroke: var(--border);
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    transition: stroke 0.25s ease;
+}
+
+
+/* Onda modulada em amplitude */
+
+.circuit-symbol.am-symbol {
+    width: 120px;
+    height: 40px;
+    flex: 0 0 120px;
+}
+
+
+/* ========================================
+   APRESENTAÇÃO
 ======================================== */
 
 .intro {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 48px 0;
+
+    padding: 36px 0 50px;
 
     display: flex;
     align-items: center;
@@ -158,6 +345,7 @@ a {
     font-size: 32px;
     font-weight: normal;
     letter-spacing: -0.5px;
+
     margin: 0 0 8px;
 }
 
@@ -173,15 +361,17 @@ a {
 
 
 /* ========================================
-   Títulos das seções
+   TÍTULOS DAS SEÇÕES
 ======================================== */
 
 .section-label {
     margin: 0 0 20px;
+
     font-family: Georgia, "Times New Roman", serif;
     font-size: 20px;
     font-weight: normal;
     letter-spacing: 0;
+
     color: var(--text);
 }
 
@@ -192,26 +382,26 @@ a {
 
 
 /* ========================================
-   Sobre
+   SOBRE
 ======================================== */
 
 .about {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 24px 0 40px;
-    border-top: 1px solid var(--border);
+
+    padding: 10px 0 42px;
 }
 
 
 /* ========================================
-   Projetos
+   PROJETOS
 ======================================== */
 
 .projects {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 24px 0 40px;
-    border-top: 1px solid var(--border);
+
+    padding: 10px 0 42px;
 }
 
 .projects-list {
@@ -220,14 +410,14 @@ a {
 
 
 /* ========================================
-   Rodapé / Contato
+   RODAPÉ / CONTATO
 ======================================== */
 
 .site-footer {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 24px 0 40px;
-    border-top: 1px solid var(--border);
+
+    padding: 10px 0 40px;
 
     display: flex;
     align-items: center;
@@ -239,17 +429,20 @@ a {
 }
 
 .site-footer a {
+    position: relative;
+    display: inline-block;
+
     color: var(--text);
     text-decoration: none;
 }
 
-.site-footer a:hover {
-    color: var(--accent);
+.site-footer a::after {
+    bottom: -4px;
 }
 
 
 /* ========================================
-   Acessibilidade
+   ACESSIBILIDADE
 ======================================== */
 
 a:focus-visible,
@@ -258,68 +451,153 @@ button:focus-visible {
     outline-offset: 4px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    body {
-        transition: none;
-    }
-}
-
 
 /* ========================================
-   Responsividade — Tablets
+   TABLETS
 ======================================== */
 
 @media (max-width: 1040px) {
+
     .site-header,
+    .circuit-divider,
     .intro,
     .about,
     .projects,
     .site-footer {
+        width: auto;
+
         margin-left: 20px;
         margin-right: 20px;
     }
+
 }
 
 
 /* ========================================
-   Responsividade — Celulares
+   CELULARES
 ======================================== */
 
 @media (max-width: 600px) {
+
+    /* Cabeçalho */
+
     .site-header {
-        flex-direction: column;
-        gap: 16px;
+        display: grid;
+
+        grid-template-columns: 1fr auto;
+
+        grid-template-areas:
+            "logo controls"
+            "nav nav";
+
+        align-items: center;
+
+        column-gap: 12px;
+        row-gap: 16px;
+
+        padding: 20px 0;
+    }
+
+    .site-logo {
+        grid-area: logo;
+        justify-self: start;
     }
 
     .header-actions {
-        flex-direction: column;
-        gap: 14px;
-    }
-
-    .site-nav {
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: contents;
     }
 
     .site-controls {
+        grid-area: controls;
+        justify-self: end;
+
         border-left: none;
         padding-left: 0;
     }
 
+    .site-nav {
+        grid-area: nav;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    /* Símbolos RLC */
+
+    .circuit-symbol {
+        width: 64px;
+        flex-basis: 64px;
+    }
+
+    /* Onda AM */
+
+    .circuit-symbol.am-symbol {
+        width: 100px;
+        height: 40px;
+        flex-basis: 100px;
+    }
+
+    /* Apresentação */
+
     .intro {
-        padding: 36px 0;
+        padding: 24px 0 40px;
     }
 
     .intro h1 {
         font-size: 28px;
     }
 
+    /* Seções */
+
+    .about,
+    .projects {
+        padding-top: 10px;
+        padding-bottom: 38px;
+    }
+
+    /* Rodapé */
+
     .site-footer {
         flex-wrap: wrap;
     }
+
+}
+
+
+/* ========================================
+   REDUÇÃO DE MOVIMENTO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    body,
+    .site-header,
+    .intro,
+    .about,
+    .projects,
+    .site-footer,
+    .site-nav a,
+    .site-nav a::after,
+    .site-controls,
+    .site-controls button,
+    .intro-course,
+    .intro-university,
+    .section-label,
+    .section-label em,
+    .site-footer a,
+    .site-footer a::after,
+    .site-logo img,
+    .circuit-wire,
+    .circuit-symbol path {
+        transition: none;
+    }
+
 }
