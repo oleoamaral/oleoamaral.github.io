@@ -1,603 +1,996 @@
 
-/* ========================================
-   CORES — TEMA CLARO
-======================================== */
+/* =========================================
+   TEMA
+========================================= */
 
 :root {
-    --background: #F7F4E9;
-    --text: #181818;
-    --border: #D8D5CA;
-    --accent: #2563EB;
-    --muted: #666666;
+  --background: #20211f;
+  --text: #f1ede3;
+  --muted: #b8b8b0;
+  --border: #484a45;
+  --accent: #82adff;
+  --panel: #252724;
+  --panel-border: #50524e;
+  --error: #d98b8b;
+  --success: #9ac5a0;
 }
 
-
-/* ========================================
-   CORES — TEMA ESCURO
-======================================== */
-
-html[data-theme="dark"] {
-    --background: #20211F;
-    --text: #F1EDE3;
-    --border: #444640;
-    --accent: #82ADFF;
-    --muted: #B8B8B0;
+html[data-theme="light"] {
+  --background: #f7f4e9;
+  --text: #181818;
+  --muted: #666;
+  --border: #d8d5ca;
+  --accent: #2563eb;
+  --panel: #f1eee5;
+  --panel-border: #d4d0c6;
+  --error: #b83232;
+  --success: #287a45;
 }
 
+/* =========================================
+   BASE
+========================================= */
 
-/* ========================================
-   CONFIGURAÇÕES GERAIS
-======================================== */
-
-* {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-
-    background-color: var(--background);
-    color: var(--text);
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    transition:
-        background-color 0.25s ease,
-        color 0.25s ease;
+  margin: 0;
+  min-width: 320px;
+  background: var(--background);
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
 }
 
-button,
 a {
-    -webkit-tap-highlight-color: transparent;
+  color: inherit;
 }
 
+button {
+  cursor: pointer;
+}
 
-/* ========================================
-   TRANSIÇÕES DE CORES
-======================================== */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+canvas:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 
 .site-header,
+.circuit-divider,
 .intro,
 .about,
 .projects,
-.site-footer,
-.site-nav a,
-.site-controls,
-.site-controls button,
-.intro-course,
-.intro-university,
-.section-label,
-.section-label em,
-.site-footer a {
-    transition:
-        color 0.25s ease,
-        border-color 0.25s ease,
-        background-color 0.25s ease;
+.site-footer {
+  width: min(calc(100% - 48px), 1440px);
+  margin-inline: auto;
 }
 
-
-/* ========================================
+/* =========================================
    CABEÇALHO
-======================================== */
+========================================= */
 
 .site-header {
-    max-width: 1000px;
-    margin: 0 auto;
-
-    padding: 22px 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
 }
 
-
-/* Logotipo */
-
 .site-logo {
-    display: inline-flex;
-    align-items: center;
-    flex-shrink: 0;
-
-    text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .site-logo img {
-    display: block;
-
-    width: 110px;
-    height: auto;
-
-    transition: opacity 0.2s ease;
+  display: block;
+  width: 150px;
+  height: auto;
 }
 
-.site-logo:hover img {
-    opacity: 0.82;
+.header-right,
+.site-nav,
+.header-controls {
+  display: flex;
+  align-items: center;
 }
 
-
-/* Navegação */
-
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 30px;
+.header-right {
+  gap: 30px;
 }
 
 .site-nav {
-    display: flex;
-    align-items: center;
-    gap: 28px;
+  gap: 32px;
 }
 
 .site-nav a {
-    position: relative;
-    display: inline-block;
-
-    padding: 5px 0;
-
-    color: var(--text);
-    text-decoration: none;
-
-    font-size: 14px;
-    white-space: nowrap;
-}
-
-
-/* Sublinhado dos links */
-
-.site-nav a::after,
-.site-footer a::after {
-    content: "";
-
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 1px;
-
-    height: 1px;
-    background-color: var(--accent);
-
-    transform: scaleX(0);
-    transform-origin: left;
-
-    transition:
-        transform 0.2s ease,
-        background-color 0.25s ease;
+  font-size: 15px;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .site-nav a:hover,
-.site-nav a.is-active,
-.site-footer a:hover {
-    color: var(--accent);
+.site-nav a.is-active {
+  color: var(--accent);
 }
 
-.site-nav a:hover::after,
-.site-nav a:focus-visible::after,
-.site-nav a.is-active::after,
-.site-footer a:hover::after,
-.site-footer a:focus-visible::after {
-    transform: scaleX(1);
+.header-controls {
+  gap: 15px;
+  padding-left: 22px;
+  border-left: 1px solid var(--border);
 }
 
-
-/* ========================================
-   CONTROLES DE TEMA E IDIOMA
-======================================== */
-
-.site-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    padding-left: 18px;
-    border-left: 1px solid var(--border);
+.header-controls button {
+  padding: 5px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: 14px Arial, sans-serif;
 }
 
-.site-controls button {
-    appearance: none;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    min-width: 28px;
-    min-height: 28px;
-
-    padding: 4px;
-    margin: 0;
-
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-
-    color: var(--text);
-
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    line-height: 1;
-
-    cursor: pointer;
-}
-
-.site-controls button:hover {
-    color: var(--accent);
-}
-
-
-/* ========================================
-   SEPARADORES — R, L, C E AM
-======================================== */
+/* =========================================
+   DIVISORES — MAIS COMPACTOS
+========================================= */
 
 .circuit-divider {
-    max-width: 1000px;
-    width: 100%;
-    height: 40px;
-
-    margin: 0 auto;
-
-    display: flex;
-    align-items: center;
+  height: 24px;
+  display: flex;
+  align-items: center;
 }
 
-
-/* Linhas horizontais */
-
-.circuit-wire {
-    position: relative;
-
-    flex: 1;
-    height: 1px;
-
-    background-color: var(--border);
-
-    transition: background-color 0.25s ease;
+.circuit-line {
+  position: relative;
+  height: 1px;
+  flex: 1;
+  background: var(--border);
 }
 
-
-/* Pontos azuis nas extremidades */
-
-.circuit-wire:first-child::before,
-.circuit-wire:last-child::after {
-    content: "";
-
-    position: absolute;
-    top: 50%;
-
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-    background-color: var(--accent);
-
-    transform: translateY(-50%);
-
-    transition: background-color 0.25s ease;
+.circuit-line:first-child::before,
+.circuit-line:last-child::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateY(-50%);
 }
 
-.circuit-wire:first-child::before {
-    left: 0;
+.circuit-line:first-child::before {
+  left: 0;
 }
 
-.circuit-wire:last-child::after {
-    right: 0;
+.circuit-line:last-child::after {
+  right: 0;
 }
 
-
-/* Símbolos RLC */
-
-.circuit-symbol {
-    display: block;
-
-    width: 80px;
-    height: 32px;
-    flex: 0 0 80px;
-
-    overflow: visible;
+.circuit-component {
+  width: 80px;
+  height: 32px;
+  flex: 0 0 80px;
 }
 
-.circuit-symbol path {
-    fill: none;
-    stroke: var(--border);
-    stroke-width: 1;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-
-    transition: stroke 0.25s ease;
+.circuit-component path {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-
-/* Onda modulada em amplitude */
-
-.circuit-symbol.am-symbol {
-    width: 120px;
-    height: 40px;
-    flex: 0 0 120px;
+.am-component {
+  width: 120px;
+  height: 40px;
+  flex-basis: 120px;
 }
 
-
-/* ========================================
-   APRESENTAÇÃO
-======================================== */
+/* =========================================
+   APRESENTAÇÃO — ALTURA REDUZIDA
+========================================= */
 
 .intro {
-    max-width: 1000px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(0, 0.95fr)
+    minmax(0, 1.3fr);
+  align-items: center;
+  gap: 24px;
 
-    padding: 36px 0 50px;
-
-    display: flex;
-    align-items: center;
+  /* Antes: min-height: 250px; padding: 25px 0 */
+  min-height: 185px;
+  padding: 5px 0;
 }
 
-.intro-content {
-    flex: 1;
-    min-width: 0;
+.intro-identity,
+.intro-summary,
+.intro-technical {
+  min-width: 0;
 }
 
-.intro h1 {
-    font-size: 32px;
-    font-weight: normal;
-    letter-spacing: -0.5px;
+.intro-identity h1 {
+  margin: 0 0 12px;
+  font-size: clamp(29px, 3vw, 42px);
+  font-weight: normal;
+  letter-spacing: -0.7px;
+}
 
-    margin: 0 0 8px;
+.intro-course,
+.intro-university {
+  margin: 0;
+  font-size: clamp(15px, 1.3vw, 19px);
+  line-height: 1.5;
 }
 
 .intro-course {
-    color: var(--accent);
-    margin: 0;
+  color: var(--accent);
 }
 
 .intro-university {
-    color: var(--muted);
-    margin: 4px 0 0;
+  color: var(--muted);
 }
 
-
-/* ========================================
-   TÍTULOS DAS SEÇÕES
-======================================== */
-
-.section-label {
-    margin: 0 0 20px;
-
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 20px;
-    font-weight: normal;
-    letter-spacing: 0;
-
-    color: var(--text);
+.intro-summary {
+  min-height: 155px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 24px;
+  border-left: 1px solid var(--border);
 }
 
-.section-label em {
-    color: var(--muted);
-    font-weight: normal;
+.intro-summary > p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: clamp(15px, 1.25vw, 18px);
+  line-height: 1.55;
 }
 
+.technical-caption {
+  width: fit-content;
+  padding-top: 10px;
+  border-top: 1px solid var(--accent);
+}
 
-/* ========================================
-   SOBRE
-======================================== */
+.technical-caption span {
+  color: var(--muted);
+  font: 10px/1.6 Arial, sans-serif;
+  letter-spacing: 1.1px;
+}
+
+/* =========================================
+   CARTA DE SMITH
+========================================= */
+
+.intro-technical {
+  min-height: 175px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 40px;
+  border-left: 1px solid var(--border);
+}
+
+.smith-chart {
+  width: 175px;
+  height: 175px;
+  flex: 0 0 175px;
+}
+
+.smith-chart svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.smith-outline {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.25;
+}
+
+.smith-axis {
+  stroke: var(--accent);
+  stroke-width: 0.9;
+  opacity: 0.8;
+}
+
+.smith-resistance,
+.smith-reactance {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 0.75;
+  opacity: 0.65;
+}
+
+.smith-center {
+  fill: var(--accent);
+}
+
+.technical-interests {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.technical-rule {
+  display: block;
+  width: 40px;
+  height: 1px;
+  margin-bottom: 4px;
+  background: var(--accent);
+}
+
+.technical-interests p {
+  margin: 0;
+  color: var(--muted);
+  font: 9px/1.5 Arial, sans-serif;
+  letter-spacing: 0.7px;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   SOBRE — MENOS ESPAÇO VERTICAL
+========================================= */
 
 .about {
-    max-width: 1000px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 
-    padding: 10px 0 42px;
+  /* Antes: padding: 22px 0 */
+  padding: 9px 0;
 }
 
+.about-text {
+  min-width: 0;
+}
 
-/* ========================================
-   PROJETOS
-======================================== */
+.about-text h2,
+.projects-heading h2 {
+  margin: 0 0 12px;
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.about-text p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 920px;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================
+   PAINEL DE JOGOS
+========================================= */
+
+.games-panel {
+  width: 350px;
+  min-width: 0;
+  justify-self: end;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--panel);
+  overflow: hidden;
+}
+
+.games-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.games-header h3 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: normal;
+}
+
+.game-title-dot {
+  color: var(--accent);
+}
+
+.game-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.game-switch button {
+  padding: 5px 8px;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  color: var(--muted);
+  font: 10px Arial, sans-serif;
+}
+
+.game-switch button.is-selected {
+  background: var(--accent);
+  color: var(--background);
+}
+
+.game-view[hidden] {
+  display: none !important;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: 176px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.game-actions {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.game-actions button {
+  width: 100%;
+  min-height: 29px;
+  padding: 5px 4px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--text);
+  font: 10px Arial, sans-serif;
+}
+
+.game-actions button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.game-actions button:last-of-type {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.game-actions button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.game-instructions {
+  color: var(--muted);
+  font: 9px/1.25 Arial, sans-serif;
+}
+
+.game-status {
+  color: var(--muted);
+  font: 9px/1.3 Arial, sans-serif;
+}
+
+.side-instructions {
+  margin: 3px 0 0;
+  text-align: left;
+}
+
+.side-status {
+  height: 26px;
+  min-height: 26px;
+  max-height: 26px;
+  margin: 0;
+  overflow: hidden;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.game-status[data-state="error"] {
+  color: var(--error);
+}
+
+.game-status[data-state="success"] {
+  color: var(--success);
+}
+
+/* =========================================
+   SUDOKU 4×4
+========================================= */
+
+.sudoku-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 176px;
+  height: 176px;
+  border: 2px solid var(--accent);
+  background: var(--background);
+}
+
+.sudoku-cell {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--background);
+  color: var(--accent);
+  font: 19px Georgia, serif;
+  text-align: center;
+  appearance: none;
+  outline-offset: -3px;
+}
+
+.sudoku-cell[data-col="1"] {
+  border-right: 2px solid var(--accent);
+}
+
+.sudoku-cell[data-col="3"] {
+  border-right: 0;
+}
+
+.sudoku-cell[data-row="1"] {
+  border-bottom: 2px solid var(--accent);
+}
+
+.sudoku-cell[data-row="3"] {
+  border-bottom: 0;
+}
+
+.sudoku-cell.is-fixed {
+  color: var(--text);
+  font-weight: bold;
+  cursor: default;
+}
+
+.sudoku-cell:not(.is-fixed):focus {
+  background: color-mix(
+    in srgb,
+    var(--accent) 13%,
+    var(--background)
+  );
+}
+
+.sudoku-cell.is-error {
+  background: color-mix(
+    in srgb,
+    var(--error) 18%,
+    var(--background)
+  );
+  color: var(--error);
+}
+
+.sudoku-cell.is-correct {
+  color: var(--success);
+}
+
+/* =========================================
+   SNAKE
+========================================= */
+
+.snake-board-wrapper {
+  width: 176px;
+  height: 176px;
+  border: 2px solid var(--accent);
+  background: var(--background);
+}
+
+#snake-canvas {
+  display: block;
+  width: 172px;
+  height: 172px;
+  image-rendering: pixelated;
+}
+
+.snake-score {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  margin-top: 2px;
+  color: var(--muted);
+}
+
+.snake-score span {
+  font: 9px Arial, sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.snake-score strong {
+  color: var(--accent);
+  font: 17px Georgia, serif;
+}
+
+.snake-touch-controls {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.snake-touch-controls button {
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--accent);
+  font: 15px Arial, sans-serif;
+  touch-action: manipulation;
+}
+
+/* =========================================
+   PROJETOS — MENOS ESPAÇO SUPERIOR
+========================================= */
 
 .projects {
-    max-width: 1000px;
-    margin: 0 auto;
-
-    padding: 10px 0 42px;
+  /* Antes: padding: 22px 0 30px */
+  padding: 9px 0 20px;
 }
 
-.projects-list {
-    margin-top: 24px;
+.projects-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 16px;
 }
 
+.projects-heading h2 {
+  margin: 0;
+}
 
-/* ========================================
-   RODAPÉ / CONTATO
-======================================== */
+.projects-heading em {
+  color: var(--muted);
+  font-size: 0.8em;
+  font-weight: normal;
+}
+
+.projects-heading > a {
+  color: var(--accent);
+  font-size: 14px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.project-card {
+  min-width: 0;
+  min-height: 180px;
+  display: grid;
+  grid-template-columns: 36% minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 12px;
+  padding: 13px;
+  border: 1px solid var(--panel-border);
+  border-radius: 7px;
+  background: var(--panel);
+}
+
+.project-art {
+  min-width: 0;
+  min-height: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  background: var(--background);
+}
+
+.project-art svg {
+  width: 85%;
+  max-width: 110px;
+  height: 90px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.project-description {
+  min-width: 0;
+}
+
+.project-description h3 {
+  margin: 2px 0 10px;
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: normal;
+}
+
+.project-description p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.project-footer {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font: 10px Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+.project-footer span:last-child {
+  color: var(--accent);
+  font-size: 18px;
+}
+
+/* =========================================
+   RODAPÉ
+========================================= */
 
 .site-footer {
-    max-width: 1000px;
-    margin: 0 auto;
-
-    padding: 10px 0 40px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-
-    color: var(--muted);
-    font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 0 24px;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 .site-footer a {
-    position: relative;
-    display: inline-block;
-
-    color: var(--text);
-    text-decoration: none;
+  color: var(--text);
+  text-decoration: none;
 }
 
-.site-footer a::after {
-    bottom: -4px;
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (min-width: 951px) and (max-width: 1350px) {
+  .intro {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 0.95fr)
+      minmax(0, 1.3fr);
+    gap: 18px;
+  }
+
+  .intro-identity h1 {
+    font-size: clamp(28px, 2.8vw, 38px);
+  }
+
+  .intro-summary {
+    padding-left: 18px;
+  }
+
+  .intro-technical {
+    padding-left: 28px;
+    gap: 10px;
+  }
+
+  .smith-chart {
+    width: 155px;
+    height: 155px;
+    flex-basis: 155px;
+  }
+
+  .technical-interests p {
+    font-size: 8px;
+    letter-spacing: 0.4px;
+  }
 }
 
+@media (min-width: 681px) and (max-width: 950px) {
+  .intro {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
 
-/* ========================================
-   ACESSIBILIDADE
-======================================== */
+  .intro-technical {
+    grid-column: 1 / -1;
+    padding-left: 20px;
+  }
 
-a:focus-visible,
-button:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
+  .smith-chart {
+    width: 155px;
+    height: 155px;
+    flex-basis: 155px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    grid-template-columns: 150px minmax(0, 1fr);
+  }
 }
 
+@media (max-width: 800px) {
+  .about {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
 
-/* ========================================
-   TABLETS
-======================================== */
-
-@media (max-width: 1040px) {
-
-    .site-header,
-    .circuit-divider,
-    .intro,
-    .about,
-    .projects,
-    .site-footer {
-        width: auto;
-
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
+  .games-panel {
+    width: min(100%, 350px);
+    justify-self: center;
+    margin-inline: auto;
+  }
 }
 
+@media (max-width: 680px) {
+  .site-header,
+  .circuit-divider,
+  .intro,
+  .about,
+  .projects,
+  .site-footer {
+    width: calc(100% - 36px);
+  }
 
-/* ========================================
-   CELULARES
-======================================== */
+  .site-header {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    padding: 12px 0;
+  }
 
-@media (max-width: 600px) {
+  .site-logo img {
+    width: 135px;
+  }
 
-    /* Cabeçalho */
+  .header-right {
+    display: contents;
+  }
 
-    .site-header {
-        display: grid;
+  .header-controls {
+    grid-column: 2;
+    grid-row: 1;
+    gap: 10px;
+    padding-left: 0;
+    border-left: 0;
+  }
 
-        grid-template-columns: 1fr auto;
+  .site-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: space-between;
+    gap: 12px;
+  }
 
-        grid-template-areas:
-            "logo controls"
-            "nav nav";
+  .site-nav a {
+    font-size: 14px;
+  }
 
-        align-items: center;
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    min-height: 0;
+    padding: 12px 0;
+  }
 
-        column-gap: 12px;
-        row-gap: 16px;
+  .intro-identity h1 {
+    font-size: 32px;
+  }
 
-        padding: 20px 0;
-    }
+  .intro-summary,
+  .intro-technical {
+    grid-column: 1;
+    min-height: 0;
+    padding-left: 16px;
+  }
 
-    .site-logo {
-        grid-area: logo;
-        justify-self: start;
-    }
+  .smith-chart {
+    width: 135px;
+    height: 135px;
+    flex-basis: 135px;
+  }
 
-    .header-actions {
-        display: contents;
-    }
+  .technical-interests p {
+    font-size: 8px;
+    letter-spacing: 0.4px;
+  }
 
-    .site-controls {
-        grid-area: controls;
-        justify-self: end;
+  .about-text h2,
+  .projects-heading h2 {
+    font-size: 26px;
+  }
 
-        border-left: none;
-        padding-left: 0;
-    }
+  .snake-touch-controls {
+    display: flex;
+  }
 
-    .site-nav {
-        grid-area: nav;
+  .projects-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
 
-        gap: 16px;
-        flex-wrap: wrap;
-    }
-
-    /* Símbolos RLC */
-
-    .circuit-symbol {
-        width: 64px;
-        flex-basis: 64px;
-    }
-
-    /* Onda AM */
-
-    .circuit-symbol.am-symbol {
-        width: 100px;
-        height: 40px;
-        flex-basis: 100px;
-    }
-
-    /* Apresentação */
-
-    .intro {
-        padding: 24px 0 40px;
-    }
-
-    .intro h1 {
-        font-size: 28px;
-    }
-
-    /* Seções */
-
-    .about,
-    .projects {
-        padding-top: 10px;
-        padding-bottom: 38px;
-    }
-
-    /* Rodapé */
-
-    .site-footer {
-        flex-wrap: wrap;
-    }
-
+  .project-card {
+    grid-template-columns: 38% minmax(0, 1fr);
+  }
 }
 
+@media (max-width: 370px) {
+  .games-panel {
+    padding: 9px;
+  }
 
-/* ========================================
-   REDUÇÃO DE MOVIMENTO
-======================================== */
+  .game-layout {
+    grid-template-columns: minmax(0, 1fr) 88px;
+    gap: 8px;
+  }
+
+  .sudoku-board,
+  .snake-board-wrapper {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  #snake-canvas {
+    width: 100%;
+    height: 100%;
+  }
+
+  .smith-chart {
+    width: 110px;
+    height: 110px;
+    flex-basis: 110px;
+  }
+
+  .technical-interests p {
+    font-size: 7px;
+  }
+
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    body,
-    .site-header,
-    .intro,
-    .about,
-    .projects,
-    .site-footer,
-    .site-nav a,
-    .site-nav a::after,
-    .site-controls,
-    .site-controls button,
-    .intro-course,
-    .intro-university,
-    .section-label,
-    .section-label em,
-    .site-footer a,
-    .site-footer a::after,
-    .site-logo img,
-    .circuit-wire,
-    .circuit-symbol path {
-        transition: none;
-    }
-
+  html {
+    scroll-behavior: auto;
+  }
 }

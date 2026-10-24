@@ -1,304 +1,489 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>lnrd.mrl</title>
+  <meta
+    name="description"
+    content="Portfólio de Leonardo S. Amaral, estudante de Engenharia de Telecomunicações na Universidade Federal de Santa Maria."
+  >
 
-    <link
-        rel="icon"
-        type="image/svg+xml"
-        href="assets/images/favicon.svg"
-    >
+  <title>Leonardo S. Amaral | Telecomunicações</title>
 
-    <!-- Aplicar o tema salvo antes de exibir a página -->
-    <script>
-        try {
-            const theme = localStorage.getItem("theme");
+  <link rel="stylesheet" href="styles.css?v=20">
 
-            document.documentElement.dataset.theme =
-                theme === "dark" ? "dark" : "light";
-        } catch (error) {
-            document.documentElement.dataset.theme = "light";
-        }
-    </script>
-
-    <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      document.documentElement.dataset.theme =
+        localStorage.getItem("theme") === "light" ? "light" : "dark";
+    } catch {
+      document.documentElement.dataset.theme = "dark";
+    }
+  </script>
 </head>
 
 <body>
 
-    <!-- ========================================
-         CABEÇALHO
-    ========================================= -->
+  <header class="site-header">
+    <a class="site-logo" href="#inicio" aria-label="Voltar ao início">
+      <img src="assets/images/lnrd.mrl.png" alt="lnrd.mrl">
+    </a>
 
-    <header class="site-header">
+    <div class="header-right">
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="#sobre" data-pt="Sobre" data-en="About">Sobre</a>
+        <a href="#projetos" data-pt="Projetos" data-en="Projects">Projetos</a>
+        <a href="#contato" data-pt="Contato" data-en="Contact">Contato</a>
+      </nav>
 
-        <a
-            href="#inicio"
-            class="site-logo"
-            aria-label="Voltar ao início"
-        >
-            <img
-                src="assets/images/lnrd-mrl.png"
-                alt=""
-            >
-        </a>
+      <div class="header-controls">
+        <button id="theme-toggle" type="button" aria-label="Alternar tema">☀</button>
+        <button id="language-toggle" type="button" aria-label="Alterar idioma">EN</button>
+      </div>
+    </div>
+  </header>
 
-        <div class="header-actions">
+  <main id="inicio">
 
-            <nav
-                class="site-nav"
-                aria-label="Navegação principal"
-            >
-
-                <a
-                    href="#sobre"
-                    data-pt="Sobre"
-                    data-en="About"
-                >Sobre</a>
-
-                <a
-                    href="#projetos"
-                    data-pt="Projetos"
-                    data-en="Projects"
-                >Projetos</a>
-
-                <a
-                    href="#contato"
-                    data-pt="Contato"
-                    data-en="Contact"
-                >Contato</a>
-
-            </nav>
-
-            <div class="site-controls">
-
-                <button
-                    id="theme-toggle"
-                    type="button"
-                    aria-label="Ativar tema escuro"
-                    aria-pressed="false"
-                    title="Ativar tema escuro"
-                >☾</button>
-
-                <button
-                    id="language-toggle"
-                    type="button"
-                    aria-label="Switch to English"
-                    title="Alterar idioma"
-                >EN</button>
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-    <main>
-
-        <!-- ========================================
-             SEPARADOR 1 — RESISTOR
-             Abaixo do cabeçalho
-        ========================================= -->
-
-        <div class="circuit-divider" aria-hidden="true">
-
-            <span class="circuit-wire"></span>
-
-            <svg
-                class="circuit-symbol"
-                viewBox="0 0 80 32"
-            >
-                <path
-                    d="M0 16 H10
-                       L20 6 L30 26
-                       L40 6 L50 26
-                       L60 6 L70 16
-                       H80"
-                />
-            </svg>
-
-            <span class="circuit-wire"></span>
-
-        </div>
-
-
-        <!-- ========================================
-             APRESENTAÇÃO
-        ========================================= -->
-
-        <section class="intro" id="inicio">
-
-            <div class="intro-content">
-
-                <h1>Leonardo S. Amaral</h1>
-
-                <p
-                    class="intro-course"
-                    data-pt="Engenharia de Telecomunicações"
-                    data-en="Telecommunications Engineering"
-                >
-                    Engenharia de Telecomunicações
-                </p>
-
-                <p
-                    class="intro-university"
-                    data-pt="Universidade Federal de Santa Maria"
-                    data-en="Federal University of Santa Maria"
-                >
-                    Universidade Federal de Santa Maria
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- ========================================
-             SEPARADOR 2 — INDUTOR
-             Antes de Sobre
-        ========================================= -->
-
-        <div class="circuit-divider" aria-hidden="true">
-
-            <span class="circuit-wire"></span>
-
-            <svg
-                class="circuit-symbol"
-                viewBox="0 0 80 32"
-            >
-                <path
-                    d="M0 16 H10
-                       A10 10 0 0 1 30 16
-                       A10 10 0 0 1 50 16
-                       A10 10 0 0 1 70 16
-                       H80"
-                />
-            </svg>
-
-            <span class="circuit-wire"></span>
-
-        </div>
-
-
-        <!-- ========================================
-             SOBRE
-        ========================================= -->
-
-        <section class="about" id="sobre">
-
-            <h2
-                class="section-label"
-                data-pt="Sobre"
-                data-en="About"
-            >
-                Sobre
-            </h2>
-
-        </section>
-
-
-        <!-- ========================================
-             SEPARADOR 3 — CAPACITOR
-             Antes de Projetos
-        ========================================= -->
-
-        <div class="circuit-divider" aria-hidden="true">
-
-            <span class="circuit-wire"></span>
-
-            <svg
-                class="circuit-symbol"
-                viewBox="0 0 80 32"
-            >
-                <path d="M0 16 H34 M46 16 H80" />
-                <path d="M34 3 V29 M46 3 V29" />
-            </svg>
-
-            <span class="circuit-wire"></span>
-
-        </div>
-
-
-        <!-- ========================================
-             PROJETOS
-        ========================================= -->
-
-        <section class="projects" id="projetos">
-
-            <h2 class="section-label">
-
-                <span
-                    data-pt="Projetos"
-                    data-en="Projects"
-                >
-                    Projetos
-                </span>
-
-                <em
-                    data-pt="— acadêmicos, pessoais e profissionais."
-                    data-en="— academic, personal and professional."
-                >
-                    — acadêmicos, pessoais e profissionais.
-                </em>
-
-            </h2>
-
-            <div class="projects-list">
-                <!-- Projetos serão adicionados futuramente -->
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- ========================================
-         SEPARADOR 4 — MODULAÇÃO AM
-         Acima do rodapé
-    ========================================= -->
-
+    <!-- RESISTOR -->
     <div class="circuit-divider" aria-hidden="true">
-
-        <span class="circuit-wire"></span>
-
-        <svg
-            class="circuit-symbol am-symbol"
-            viewBox="0 0 120 40"
-        >
-            <path id="am-wave"></path>
-        </svg>
-
-        <span class="circuit-wire"></span>
-
+      <span class="circuit-line"></span>
+      <svg class="circuit-component" viewBox="0 0 80 32">
+        <path d="M0 16 H10 L20 6 L30 26 L40 6 L50 26 L60 6 L70 16 H80"/>
+      </svg>
+      <span class="circuit-line"></span>
     </div>
 
+    <!-- APRESENTAÇÃO -->
+    <section class="intro" aria-label="Apresentação">
 
-    <!-- ========================================
-         RODAPÉ / CONTATO
-    ========================================= -->
+      <div class="intro-identity">
+        <h1>Leonardo S. Amaral</h1>
 
-    <footer class="site-footer" id="contato">
+        <p
+          class="intro-course"
+          data-pt="Engenharia de Telecomunicações"
+          data-en="Telecommunications Engineering"
+        >
+          Engenharia de Telecomunicações
+        </p>
 
-        <span>Leonardo S. Amaral</span>
+        <p
+          class="intro-university"
+          data-pt="Universidade Federal de Santa Maria"
+          data-en="Federal University of Santa Maria"
+        >
+          Universidade Federal de Santa Maria
+        </p>
+      </div>
+
+      <div class="intro-summary">
+        <p
+          data-pt="Interesse em desenvolvimento de hardware, projeto de PCBs, radiofrequência e criação de produtos tecnológicos."
+          data-en="Interested in hardware development, PCB design, radio frequency and technological product development."
+        >
+          Interesse em desenvolvimento de hardware, projeto de PCBs,
+          radiofrequência e criação de produtos tecnológicos.
+        </p>
+
+        <div class="technical-caption">
+          <span
+            data-pt="HARDWARE · PCB · RF · PRODUTOS"
+            data-en="HARDWARE · PCB · RF · PRODUCTS"
+          >
+            HARDWARE · PCB · RF · PRODUTOS
+          </span>
+        </div>
+      </div>
+
+      <div class="intro-technical">
+        <div class="smith-chart" role="img" aria-label="Carta de Smith">
+          <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="smith-clip">
+                <circle cx="150" cy="150" r="125"/>
+              </clipPath>
+            </defs>
+
+            <circle class="smith-outline" cx="150" cy="150" r="125"/>
+            <line class="smith-axis" x1="25" y1="150" x2="275" y2="150"/>
+            <g id="smith-grid" clip-path="url(#smith-clip)"></g>
+            <circle class="smith-center" cx="150" cy="150" r="2.5"/>
+          </svg>
+        </div>
+
+        <div class="technical-interests">
+          <span class="technical-rule"></span>
+          <p data-pt="HARDWARE" data-en="HARDWARE">HARDWARE</p>
+          <p data-pt="PROJETO DE PCBs" data-en="PCB DESIGN">PROJETO DE PCBs</p>
+          <p data-pt="RADIOFREQUÊNCIA" data-en="RADIO FREQUENCY">RADIOFREQUÊNCIA</p>
+          <p
+            data-pt="DESENVOLVIMENTO DE PRODUTOS"
+            data-en="PRODUCT DEVELOPMENT"
+          >
+            DESENVOLVIMENTO DE PRODUTOS
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDUTOR -->
+    <div class="circuit-divider" aria-hidden="true">
+      <span class="circuit-line"></span>
+      <svg class="circuit-component" viewBox="0 0 80 32">
+        <path d="M0 16 H10 A10 10 0 0 1 30 16 A10 10 0 0 1 50 16 A10 10 0 0 1 70 16 H80"/>
+      </svg>
+      <span class="circuit-line"></span>
+    </div>
+
+    <!-- SOBRE -->
+    <section class="about" id="sobre">
+
+      <div class="about-text">
+        <h2 data-pt="Sobre" data-en="About">Sobre</h2>
+
+        <p
+          data-pt="Sou estudante de Engenharia de Telecomunicações na Universidade Federal de Santa Maria, com interesse em desenvolvimento de hardware, projeto de placas de circuito impresso (PCBs), radiofrequência (RF) e desenvolvimento de produtos tecnológicos."
+          data-en="I am a Telecommunications Engineering student at the Federal University of Santa Maria, interested in hardware development, printed circuit board design, radio frequency and technological product development."
+        >
+          Sou estudante de Engenharia de Telecomunicações na Universidade
+          Federal de Santa Maria, com interesse em desenvolvimento de hardware,
+          projeto de placas de circuito impresso (PCBs), radiofrequência (RF)
+          e desenvolvimento de produtos tecnológicos.
+        </p>
+
+        <p
+          data-pt="Busco integrar conhecimentos de eletrônica e telecomunicações para transformar ideias em soluções práticas, desde a concepção e o projeto até a prototipagem e a validação."
+          data-en="I aim to combine electronics and telecommunications knowledge to turn ideas into practical solutions, from concept and design to prototyping and validation."
+        >
+          Busco integrar conhecimentos de eletrônica e telecomunicações
+          para transformar ideias em soluções práticas, desde a concepção
+          e o projeto até a prototipagem e a validação.
+        </p>
+      </div>
+
+      <!-- JOGOS -->
+      <div class="games-panel">
+
+        <div class="games-header">
+          <h3 id="game-title">
+            Sudoku<span class="game-title-dot">.</span>
+          </h3>
+
+          <div class="game-switch" role="group" aria-label="Selecionar jogo">
+            <button
+              id="select-sudoku"
+              class="is-selected"
+              type="button"
+              aria-pressed="true"
+            >
+              Sudoku
+            </button>
+
+            <button
+              id="select-snake"
+              type="button"
+              aria-pressed="false"
+            >
+              Snake
+            </button>
+          </div>
+        </div>
+
+        <!-- SUDOKU -->
+        <div id="sudoku-game" class="game-view">
+          <div class="game-layout">
+
+            <div
+              id="sudoku-board"
+              class="sudoku-board"
+              role="group"
+              aria-label="Sudoku 4 por 4"
+            ></div>
+
+            <div class="game-actions">
+              <button
+                id="sudoku-check"
+                type="button"
+                data-pt="Verificar"
+                data-en="Check"
+              >
+                Verificar
+              </button>
+
+              <button
+                id="sudoku-reset"
+                type="button"
+                data-pt="Reiniciar"
+                data-en="Reset"
+              >
+                Reiniciar
+              </button>
+
+              <button
+                id="sudoku-new"
+                type="button"
+                data-pt="Novo jogo"
+                data-en="New game"
+              >
+                Novo jogo
+              </button>
+
+              <p
+                class="game-instructions side-instructions"
+                data-pt="Use números de 1 a 4."
+                data-en="Use numbers from 1 to 4."
+              >
+                Use números de 1 a 4.
+              </p>
+
+              <p
+                id="sudoku-status"
+                class="game-status side-status"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SNAKE -->
+        <div id="snake-game" class="game-view" hidden>
+          <div class="game-layout">
+
+            <div class="snake-board-wrapper">
+              <canvas
+                id="snake-canvas"
+                width="176"
+                height="176"
+                tabindex="0"
+                aria-label="Jogo da cobrinha"
+              ></canvas>
+            </div>
+
+            <div class="game-actions">
+              <button
+                id="snake-start"
+                type="button"
+                data-pt="Iniciar"
+                data-en="Start"
+              >
+                Iniciar
+              </button>
+
+              <button
+                id="snake-reset"
+                type="button"
+                data-pt="Reiniciar"
+                data-en="Reset"
+              >
+                Reiniciar
+              </button>
+
+              <button
+                id="snake-pause"
+                type="button"
+                data-pt="Pausar"
+                data-en="Pause"
+              >
+                Pausar
+              </button>
+
+              <div class="snake-score">
+                <span data-pt="PONTOS" data-en="SCORE">PONTOS</span>
+                <strong id="snake-score">00</strong>
+              </div>
+
+              <p
+                class="game-instructions side-instructions"
+                data-pt="Setas ou WASD."
+                data-en="Arrows or WASD."
+              >
+                Setas ou WASD.
+              </p>
+
+              <p
+                id="snake-status"
+                class="game-status side-status"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </div>
+          </div>
+
+          <div class="snake-touch-controls" aria-label="Controles da cobrinha">
+            <button type="button" data-direction="up" aria-label="Cima">↑</button>
+            <button type="button" data-direction="left" aria-label="Esquerda">←</button>
+            <button type="button" data-direction="down" aria-label="Baixo">↓</button>
+            <button type="button" data-direction="right" aria-label="Direita">→</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CAPACITOR -->
+    <div class="circuit-divider" aria-hidden="true">
+      <span class="circuit-line"></span>
+      <svg class="circuit-component" viewBox="0 0 80 32">
+        <path d="M0 16 H34 M46 16 H80"/>
+        <path d="M34 3 V29 M46 3 V29"/>
+      </svg>
+      <span class="circuit-line"></span>
+    </div>
+
+    <!-- PROJETOS -->
+    <section class="projects" id="projetos">
+
+      <div class="projects-heading">
+        <h2>
+          <span data-pt="Projetos" data-en="Projects">Projetos</span>
+          <em
+            data-pt="— acadêmicos, pessoais e profissionais."
+            data-en="— academic, personal and professional."
+          >
+            — acadêmicos, pessoais e profissionais.
+          </em>
+        </h2>
 
         <a
-            href="https://github.com/oleoamaral"
-            target="_blank"
-            rel="noopener noreferrer"
+          href="https://github.com/oleoamaral"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-pt="Ver todos os projetos ↗"
+          data-en="View all projects ↗"
         >
-            GitHub ↗
+          Ver todos os projetos ↗
         </a>
+      </div>
 
-    </footer>
+      <div class="projects-grid">
 
+        <article class="project-card">
+          <div class="project-art">
+            <svg viewBox="0 0 180 120" aria-hidden="true">
+              <path id="project-signal-wave"></path>
+            </svg>
+          </div>
 
-    <script src="script.js"></script>
+          <div class="project-description">
+            <h3
+              data-pt="Processamento de Sinais"
+              data-en="Signal Processing"
+            >
+              Processamento de Sinais
+            </h3>
 
+            <p
+              data-pt="Estudo e implementação de técnicas de processamento de sinais aplicadas às comunicações."
+              data-en="Study and implementation of signal processing techniques applied to communications."
+            >
+              Estudo e implementação de técnicas de processamento
+              de sinais aplicadas às comunicações.
+            </p>
+          </div>
+
+          <div class="project-footer">
+            <span data-pt="EM DESENVOLVIMENTO" data-en="IN DEVELOPMENT">
+              EM DESENVOLVIMENTO
+            </span>
+            <span aria-hidden="true">↗</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-art">
+            <svg viewBox="0 0 180 120" aria-hidden="true">
+              <rect x="49" y="20" width="82" height="80" rx="5"/>
+              <rect x="65" y="36" width="50" height="48" rx="3"/>
+              <path d="M62 8 V20 M90 8 V20 M118 8 V20 M62 100 V112 M90 100 V112 M118 100 V112 M37 33 H49 M37 60 H49 M37 87 H49 M131 33 H143 M131 60 H143 M131 87 H143"/>
+              <path d="M74 45 H91 V55 H106 M74 75 H89 V65 H106"/>
+            </svg>
+          </div>
+
+          <div class="project-description">
+            <h3 data-pt="Sistemas Embarcados" data-en="Embedded Systems">
+              Sistemas Embarcados
+            </h3>
+
+            <p
+              data-pt="Projetos com microcontroladores e interfaces para aplicações em telecomunicações."
+              data-en="Projects with microcontrollers and interfaces for telecommunications applications."
+            >
+              Projetos com microcontroladores e interfaces para
+              aplicações em telecomunicações.
+            </p>
+          </div>
+
+          <div class="project-footer">
+            <span data-pt="EM DESENVOLVIMENTO" data-en="IN DEVELOPMENT">
+              EM DESENVOLVIMENTO
+            </span>
+            <span aria-hidden="true">↗</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-art">
+            <svg viewBox="0 0 180 120" aria-hidden="true">
+              <path d="M90 104 V53 M68 104 L90 48 L112 104"/>
+              <path d="M71 46 Q90 27 109 46"/>
+              <path d="M55 34 Q90 0 125 34"/>
+              <path d="M40 22 Q90 -25 140 22"/>
+              <circle cx="90" cy="48" r="3"/>
+            </svg>
+          </div>
+
+          <div class="project-description">
+            <h3 data-pt="Comunicações Sem Fio" data-en="Wireless Communications">
+              Comunicações Sem Fio
+            </h3>
+
+            <p
+              data-pt="Estudos e experimentos em sistemas de comunicação sem fio e radiofrequência."
+              data-en="Studies and experiments in wireless communication systems and radio frequency."
+            >
+              Estudos e experimentos em sistemas de comunicação
+              sem fio e radiofrequência.
+            </p>
+          </div>
+
+          <div class="project-footer">
+            <span data-pt="EM DESENVOLVIMENTO" data-en="IN DEVELOPMENT">
+              EM DESENVOLVIMENTO
+            </span>
+            <span aria-hidden="true">↗</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ONDA AM -->
+  <div class="circuit-divider" aria-hidden="true">
+    <span class="circuit-line"></span>
+    <svg class="circuit-component am-component" viewBox="0 0 120 40">
+      <path id="footer-am-wave"></path>
+    </svg>
+    <span class="circuit-line"></span>
+  </div>
+
+  <footer class="site-footer" id="contato">
+    <span>Leonardo S. Amaral</span>
+
+    <a
+      href="https://github.com/oleoamaral"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      GitHub ↗
+    </a>
+  </footer>
+
+  <script src="script.js?v=20"></script>
 </body>
 </html>
